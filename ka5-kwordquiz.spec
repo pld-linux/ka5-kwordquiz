@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kwordquiz
 Summary:	kwordquiz
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	a76504898a44874ea4f875388e5ad8e1
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	820a5e0236ac764f15f1d5c32e9894bb
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -64,6 +64,7 @@ cd build
 %install
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
+rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/ko
 
 %find_lang %{kaname} --all-name --with-kde --with-qm
 
@@ -72,7 +73,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/kwordquiz.knsrc
 %attr(755,root,root) %{_bindir}/kwordquiz
 %{_desktopdir}/org.kde.kwordquiz.desktop
 %{_datadir}/config.kcfg/kwordquiz.kcfg
@@ -92,3 +92,4 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/kxmlgui5/kwordquiz
 %{_datadir}/kxmlgui5/kwordquiz/kwordquizui.rc
 %{_datadir}/metainfo/org.kde.kwordquiz.appdata.xml
+%{_datadir}/knsrcfiles/kwordquiz.knsrc
