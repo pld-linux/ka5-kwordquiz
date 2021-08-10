@@ -48,6 +48,12 @@ have just switched to KDE/Linux you can use all files created in
 WordQuiz with KWordQuiz. Additional information about KWordQuiz is
 available at the author's own website.
 
+%description -l pl.UTF-8
+KWordQuiz jest wersją KDE Windowsowego programu WordQuiz. Jeśli
+właśnie przeszedłeś na KDE/Linux możesz użyć wszystkich plików
+utworzonych w WordQuiz na KWordQuiz. Więcej informacji o KWordQuiz
+znajdziesz na stronie internetowej autora.
+
 %prep
 %setup -q -n %{kaname}-%{version}
 
