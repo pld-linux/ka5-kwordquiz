@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.04.3
+%define		kdeappsver	23.08.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kwordquiz
 Summary:	kwordquiz
 Name:		ka5-%{kaname}
-Version:	23.04.3
+Version:	23.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	6582527c20d601b090a5e8a353a8c7f7
+# Source0-md5:	fc0e7d3558e3375c0e5c307a8ab6bd19
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -61,18 +61,16 @@ znajdziesz na stronie internetowej autora.
 %setup -q -n %{kaname}-%{version}
 
 %build
-install -d build
-cd build
 %cmake \
+	-B build \
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-	..
-%ninja_build
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+%ninja_build -C build
 
 %if %{with tests}
-ctest
+ctest --test-dir build
 %endif
 
 
@@ -102,9 +100,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/48x48/apps/kwordquiz.png
 %{_iconsdir}/hicolor/48x48/mimetypes/application-x-kwordquiz.png
 %{_iconsdir}/hicolor/64x64/apps/kwordquiz.png
+%{_iconsdir}/hicolor/scalable/apps/org.kde.kwordquiz.svg
 %{_datadir}/knotifications5/kwordquiz.notifyrc
 %{_datadir}/kwordquiz
-%dir %{_datadir}/kxmlgui5/kwordquiz
-%{_datadir}/kxmlgui5/kwordquiz/kwordquizui.rc
 %{_datadir}/metainfo/org.kde.kwordquiz.appdata.xml
 %{_datadir}/knsrcfiles/kwordquiz.knsrc
