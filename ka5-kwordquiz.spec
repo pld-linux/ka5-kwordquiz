@@ -1,43 +1,43 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.4
+%define		kdeappsver	24.01.95
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kwordquiz
 Summary:	kwordquiz
 Name:		ka5-%{kaname}
-Version:	23.08.4
-Release:	1
+Version:	24.01.95
+Release:	0.1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	5f60141ddd1e51e8cd12bf4d3c484118
+Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	21a78cd78eeaae72d6ec1e60ef7d166a
 URL:		http://www.kde.org/
-BuildRequires:	Qt5Core-devel >= %{qtver}
-BuildRequires:	Qt5Gui-devel >= 5.11.1
-BuildRequires:	Qt5PrintSupport-devel
-BuildRequires:	Qt5Widgets-devel
+BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt6Gui-devel >= 5.11.1
+BuildRequires:	Qt6PrintSupport-devel
+BuildRequires:	Qt6Widgets-devel
 BuildRequires:	gettext-devel
 BuildRequires:	ka5-libkeduvocdocument-devel >= %{kdeappsver}
-BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf5-kconfig-devel >= %{kframever}
-BuildRequires:	kf5-kconfigwidgets-devel >= %{kframever}
-BuildRequires:	kf5-kcrash-devel >= %{kframever}
-BuildRequires:	kf5-kdoctools-devel >= %{kframever}
-BuildRequires:	kf5-kguiaddons-devel >= %{kframever}
-BuildRequires:	kf5-ki18n-devel >= %{kframever}
-BuildRequires:	kf5-kiconthemes-devel >= %{kframever}
-BuildRequires:	kf5-kitemviews-devel >= %{kframever}
-BuildRequires:	kf5-knewstuff-devel >= %{kframever}
-BuildRequires:	kf5-knotifications-devel >= %{kframever}
-BuildRequires:	kf5-knotifyconfig-devel >= %{kframever}
-BuildRequires:	kf5-kwindowsystem-devel >= %{kframever}
-BuildRequires:	kf5-kxmlgui-devel >= %{kframever}
+BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf6-kconfig-devel >= %{kframever}
+BuildRequires:	kf6-kconfigwidgets-devel >= %{kframever}
+BuildRequires:	kf6-kcrash-devel >= %{kframever}
+BuildRequires:	kf6-kdoctools-devel >= %{kframever}
+BuildRequires:	kf6-kguiaddons-devel >= %{kframever}
+BuildRequires:	kf6-ki18n-devel >= %{kframever}
+BuildRequires:	kf6-kiconthemes-devel >= %{kframever}
+BuildRequires:	kf6-kitemviews-devel >= %{kframever}
+BuildRequires:	kf6-knewstuff-devel >= %{kframever}
+BuildRequires:	kf6-knotifications-devel >= %{kframever}
+BuildRequires:	kf6-knotifyconfig-devel >= %{kframever}
+BuildRequires:	kf6-kwindowsystem-devel >= %{kframever}
+BuildRequires:	kf6-kxmlgui-devel >= %{kframever}
 BuildRequires:	ninja
-BuildRequires:	phonon-qt5-devel >= 4.6.60
-BuildRequires:	qt5-build >= %{qtver}
-BuildRequires:	qt5-qtdeclarative >= %{qtver}
+BuildRequires:	phonon-qt6-devel >= 4.6.60
+BuildRequires:	qt6-build >= %{qtver}
+BuildRequires:	qt6-qtdeclarative >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -89,19 +89,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kwordquiz
 %{_desktopdir}/org.kde.kwordquiz.desktop
 %{_datadir}/config.kcfg/kwordquiz.kcfg
-%{_iconsdir}/hicolor/128x128/apps/kwordquiz.png
-%{_iconsdir}/hicolor/128x128/mimetypes/application-x-kwordquiz.png
-%{_iconsdir}/hicolor/16x16/apps/kwordquiz.png
-%{_iconsdir}/hicolor/16x16/mimetypes/application-x-kwordquiz.png
-%{_iconsdir}/hicolor/22x22/apps/kwordquiz.png
-%{_iconsdir}/hicolor/22x22/mimetypes/application-x-kwordquiz.png
-%{_iconsdir}/hicolor/32x32/apps/kwordquiz.png
-%{_iconsdir}/hicolor/32x32/mimetypes/application-x-kwordquiz.png
-%{_iconsdir}/hicolor/48x48/apps/kwordquiz.png
-%{_iconsdir}/hicolor/48x48/mimetypes/application-x-kwordquiz.png
-%{_iconsdir}/hicolor/64x64/apps/kwordquiz.png
+%{_iconsdir}/hicolor/*x*/apps/kwordquiz.png
+%{_iconsdir}/hicolor/*x*/mimetypes/application-x-kwordquiz.png
 %{_iconsdir}/hicolor/scalable/apps/org.kde.kwordquiz.svg
-%{_datadir}/knotifications5/kwordquiz.notifyrc
 %{_datadir}/kwordquiz
 %{_datadir}/metainfo/org.kde.kwordquiz.appdata.xml
 %{_datadir}/knsrcfiles/kwordquiz.knsrc
